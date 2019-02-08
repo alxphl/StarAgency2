@@ -1,0 +1,147 @@
+﻿@using StarAgency2.Models
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+
+
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
+    @foreach (var item in ViewBag.Files)
+    {
+        <img src="@item.Path" alt="Alternate Text" />
+    }
+
+    <table>
+        <tr>
+
+
+
+            <th>
+
+                Name
+
+            </th>
+            <th></th>
+            <th>
+
+         
+
+            </th>
+            <th>
+
+                Biography
+
+            </th>
+
+
+
+        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+
+
+
+                <td>
+
+                    @Html.Encode(item.Name)
+
+                </td>
+
+                <td>
+
+              
+
+                </td>
+
+                <td>
+                    <br />
+                    <br />
+                    @Html.Encode(item.Biography)
+
+                </td>
+
+      
+
+            </tr>
+
+        }
+
+    </table>
+    <table>
+
+        <tr>
+
+
+
+            <th>
+
+                Title
+
+            </th>
+            <th></th>
+            <th>
+
+                Year
+
+            </th>
+            <th></th>
+            <th>
+
+                Link
+
+            </th>
+
+
+
+        </tr>
+        
+   
+
+        <h7>Filmography  </h7>
+
+        @foreach (var item in ViewBag.Movies)
+        {
+
+
+            <tr>
+
+
+
+                <td>
+
+                    @Html.Encode(item.Name)
+
+                </td>
+                <th></th>
+
+                <td>
+
+                    @Html.Encode(item.Year)
+
+
+                </td>
+                <th></th>
+                <td>
+                    <a href="@Html.Encode(item.Link)">Link to Movie</a>
+
+
+
+                </td>
+
+
+
+            </tr>
+
+
+
+        }
+
+    </table>
+
+    
+
+</asp:Content>

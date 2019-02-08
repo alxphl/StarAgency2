@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
+
+            div.gallery:hover {
+                border: 1px solid #777;
+            }
+
+            div.gallery img {
+                width: 100%;
+                height: auto;
+            }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+@using (Html.BeginForm("Search", "Actor", FormMethod.Get))
+{
+    @Html.TextBox("name")<input type="submit" value="Search"/>
+}
+
+<div class="gallery">
+    <a target="_blank" href="@Url.Action("Details/1", "Actor")">
+        <img src="Pacino1.jpg" alt="Al Pacino" width="600" height="400">
+    </a>
+    <div class="desc">Al Pacino</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="@Url.Action("Details/10", "Actor")">
+        <img src="Johnny1.jpg" alt="Johnny Depp" width="600" height="400">
+    </a>
+    <div class="desc">Johnny Depp</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="@Url.Action("Details/11", "Actor")">
+        <img src="Leonardo1.jpg" alt="Leonardo DiCaprio" width="600" height="400">
+    </a>
+    <div class="desc">Leonardo DiCaprio</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="@Url.Action("Details/12", "Actor")">
+        <img src="Morgan1.jpg" alt="Morgan Freeman" width="600" height="400">
+    </a>
+    <div class="desc">Morgan Freeman</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="@Url.Action("Details/14", "Actor")">
+        <img src="Robert1.jpg" alt="Robard De Niro" width="600" height="400">
+    </a>
+    <div class="desc">Robert De Niro</div>
+</div>
+</body>
+</html>
