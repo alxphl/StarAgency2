@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+
 <head>
     <style>
         div.gallery {
@@ -25,39 +25,36 @@
     </style>
 </head>
 <body>
-@using (Html.BeginForm("Search", "Actor", FormMethod.Get))
-{
-    @Html.TextBox("name")<input type="submit" value="Search"/>
-}
-    <div class="gallery">
-        <a target="_blank" href="@Url.Action("Details/7","Actor")">
-            <img src="Angelina1.jpg" alt="Angelina Jolie" width="600" height="400">
-        </a>
-        <div class="desc">Angelina Jolie</div>
-    </div>
+    @using (Html.BeginForm("Search", "Actor", FormMethod.Get))
+    {
+        @Html.TextBox("name")<input type="submit" value="Search" />
+    }
+    <table>
+        @foreach (var item in Model)
+        {
 
-    <div class="gallery">
-        <a target="_blank" href="@Url.Action("Details/8","Actor")">
-            <img src="Emma1.jpg" alt="Emma Watson" width="600" height="400">
-        </a>
-        <div class="desc">Emma Watson</div>
-    </div>
+            <tr>
 
-    <div class="gallery">
-    <a target="_blank" href="@Url.Action("Details/9","Actor")">
-        <img src="Jennifer1.jpg" alt="Jennifer Lawrence" width="600" height="400">
-    </a>
-    <div class="desc">Jennifer Lawrence</div>
-    </div>
-        <div class="gallery">
-            <a target="_blank" href="@Url.Action("Details/13","Actor")">
-                <img src="Natalie1.jpg" alt="Natalie Portman" width="600" height="400">
-            </a>
-            <div class="desc">Natalie Portman</div>
-        </div>
-        <div class="gallery">
-            <a target="_blank" href="@Url.Action("Details/15","Actor")">
-                <img src="Scarlet1.jpg" alt="Scarlett Johansson" width="600" height="400">
-            </a>
-            <div class="desc">Scarlett Johansson</div>
-        </div>
+
+
+                <td>
+                    <div class="gallery">
+                        <a target="_blank" href="@Url.Action("Details/"+@Html.Encode(item.Id), "Actor")">
+                            <img src="@Html.Encode(item.Name)1.jpg" alt="@Html.Encode(item.Name)" width="600" height="400">
+                        </a>
+                        <div class="desc">@Html.Encode(item.Name)</div>
+                    </div>
+
+
+
+                </td>
+
+
+
+            </tr>
+
+        }
+
+    </table>
+
+</body>

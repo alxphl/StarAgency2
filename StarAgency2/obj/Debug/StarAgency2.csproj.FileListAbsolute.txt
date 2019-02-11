@@ -93,3 +93,4 @@ C:\Users\Developer\source\repos\StarAgency2\StarAgency2\obj\Debug\StarAgency2.cs
 C:\Users\Developer\source\repos\StarAgency2\StarAgency2\obj\Debug\StarAgency2.csproj.CopyComplete
 C:\Users\Developer\source\repos\StarAgency2\StarAgency2\obj\Debug\StarAgency2.dll
 C:\Users\Developer\source\repos\StarAgency2\StarAgency2\obj\Debug\StarAgency2.pdb
+C:\Users\Developer\source\repos\StarAgency2\StarAgency2\obj\Debug\StarAgency2.csprojAssemblyReference.cache

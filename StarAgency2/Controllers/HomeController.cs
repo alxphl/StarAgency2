@@ -16,10 +16,28 @@ namespace StarAgency2.Controllers
         public ActionResult Index()
         {
 
+            using (var session = NHibernateHelper.OpenSession())
+            using (session.BeginTransaction())
+            {
+                /*  IQuery query = session.CreateQuery(
+                      "SELECT File.Id,File.Path"
+                      + "Actor.Id,Actor.Name" +
+                      "FROM Actor actor"+
 
-           
+                      "ORDER BY actor.Name, file.Path"
+                  );
+                  var lst = query.List<Object[]>();*/
+                var actor = session.Query<Actor>().ToList();
+                var files = session.Query<File>();
+                ViewBag.Files = files;
 
-            return View();
+                return View(actor);
+
+            }
+
+
+
+    
 
 
 
@@ -27,16 +45,35 @@ namespace StarAgency2.Controllers
 
         public ActionResult Actors()
         {
-            return View();
+            using (var session = NHibernateHelper.OpenSession())
+            using (session.BeginTransaction())
+            {
+                var actor = session.Query<Actor>().Where(x=>x.Gender=="m").ToList();
+                var files = session.Query<File>();
+                ViewBag.Files = files;
+
+                return View(actor);
+            }
+
+
 
         }
 
         public ActionResult Actress()
         {
-            return View();
+            using (var session = NHibernateHelper.OpenSession())
+            using (session.BeginTransaction())
+            {
+                var actor = session.Query<Actor>().Where(x => x.Gender == "f").ToList();
+                var files = session.Query<File>();
+                ViewBag.Files = files;
+
+                return View(actor);
+            }
+
 
         }
-     
+
         public ActionResult Contact()
         {
             return View();

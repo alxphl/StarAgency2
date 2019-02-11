@@ -41,15 +41,12 @@ namespace StarAgency2.Controllers
                 using (session.BeginTransaction())
                 {
 
-                    var actor = session.Query<Actor>().Where(x => x.Name == name).ToList();
-                    var movies = session.Query<Movie>().Where(x => x.ActorId == actor[0]).OrderByDescending(x => x.Year)
-                        .ToList();
-                    //   var files = session.Query<File>().Where(x => x.ActorId.Id == actor[0].Id);
-                    // var file = actor[0].Files;
-                    ViewBag.Movies = movies.ToList();
-                    //    ViewBag.Files = files;
-
-                    return View(actor);
+                       var actor = session.Query<Actor>().Where(x => x.Name == name).ToList();
+                       var movies = session.Query<Movie>().Where(x => x.ActorId == actor[0]).OrderByDescending(x => x.Year)  .ToList();
+                       ViewBag.Movies = movies.ToList();
+                       var files = session.Query<File>().Where(x => x.ActorId.Id == actor[0].Id);
+                       ViewBag.Files = files;
+                       return View(actor);
 
                 }
             
