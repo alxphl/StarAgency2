@@ -4,41 +4,51 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css/business-casual.css")
+    @Styles.Render("~/Content/css/business.css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/jquery-3.3.1.js")
+    <style type="text/css">
+        .bgimg {
+            background-image: url('../Home/bg2.jpg');
+            margin-left: 200px;
+            margin-right:200px
+        }
+        .toleftt {
+            margin-left: 400px;
+                    
+        }
+    </style>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Star Agency", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Actor", "Actors", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Actress", "Actress", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
-                </ul>
+<body background="bg.jpg">
+    <div class="bgimg">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                
+                </div>
+                <div class="navbar-collapse collapse">
+                    <div class="toleftt">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)
+                        @Html.ActionLink("Actor", "Actors", "Home", new { area = "" }, null)
+                        @Html.ActionLink("Actress", "Actress", "Home", new { area = "" }, null)
+                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)
+                        
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Star Agency</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Content/vendor/bootstrap/js/bootstrap.js")
-    @RenderSection("scripts", required: false)
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Star Agency</p>
+            </footer>
+        </div>
+    </div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Content/vendor/bootstrap/js/bootstrap.js")
+@RenderSection("scripts", required: false)
 </body>
 </html>

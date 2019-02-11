@@ -27,6 +27,7 @@
         .mySlides {
             display: none;
         }
+  
     </style>
 </head>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -38,125 +39,127 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 
+   
+        <table>
+            @foreach (var item in Model)
+            {
 
 
 
-    <table>
-        @foreach (var item in Model)
-        {
+                <tr>
 
 
 
-            <tr>
+                    <td>
+                        <h2 class="w3-center">@Html.Encode(item.Name)</h2>
 
+                        <div class="w3-content w3-display-container">
+                            <img class="mySlides" src="@Html.Encode(item.Name)1.jpg" style="width:100%">
+                            <img class="mySlides" src="@Html.Encode(item.Name)2.jpg" style="width:100%">
+                            <img class="mySlides" src="@Html.Encode(item.Name)3.jpg" style="width:100%">
+                            <img class="mySlides" src="@Html.Encode(item.Name)4.jpg" style="width:100%">
 
-
-                <td>
-                    <h2 class="w3-center">@Html.Encode(item.Name)</h2>
-
-                    <div class="w3-content w3-display-container">
-                        <img class="mySlides" src="@Html.Encode(item.Name)1.jpg" style="width:100%">
-                        <img class="mySlides" src="@Html.Encode(item.Name)2.jpg" style="width:100%">
-                        <img class="mySlides" src="@Html.Encode(item.Name)3.jpg" style="width:100%">
-                        <img class="mySlides" src="@Html.Encode(item.Name)4.jpg" style="width:100%">
-
-                        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-                    </div>
-
-
-
-
-                </td>
-
-
-
-            </tr>
-
-        }
-
-    </table>
-
-    <br />
-    <br />
-    <br />
-    <h7>        Filmography </h7>
-    <br />
-    <br />
-
-    <table>
+                            <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                            <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                        </div>
 
 
 
 
-
-
-        <tr>
-
+                    </td>
 
 
 
-            <th>
+                </tr>
 
-                Title
+            }
 
-            </th>
-            <th></th>
-            <th>
+        </table>
 
-                Year
+        <br />
+        <br />
+        <br />
+        <h7>        Filmography </h7>
+        <br />
+        <br />
 
-            </th>
-            <th></th>
-            <th>
-
-                Link
-
-            </th>
+        <table>
 
 
 
-        </tr>
 
-
-        @foreach (var item in ViewBag.Movies)
-        {
 
 
             <tr>
 
 
 
-                <td>
 
-                    @Html.Encode(item.Name)
+                <th>
 
-                </td>
+                    Title
+
+                </th>
                 <th></th>
+                <th>
 
-                <td>
+                    Year
 
-                    @Html.Encode(item.Year)
-
-
-                </td>
+                </th>
                 <th></th>
-                <td>
-                    <a href="@Html.Encode(item.Link)">Link to Movie</a>
+                <th>
 
+                    Link
 
-
-                </td>
+                </th>
 
 
 
             </tr>
 
 
+            @foreach (var item in ViewBag.Movies)
+            {
 
-        }
 
-    </table>
+                <tr>
+
+
+
+                    <td>
+
+                        @Html.Encode(item.Name)
+
+                    </td>
+                    <th></th>
+
+                    <td>
+
+                        @Html.Encode(item.Year)
+
+
+                    </td>
+                    <th></th>
+                    <td>
+                        <a href="@Html.Encode(item.Link)">Link to Movie</a>
+
+
+
+                    </td>
+
+
+
+                </tr>
+
+
+
+            }
+
+        </table>
+ 
+
+
+
     <script>
         var slideIndex = 1;
         showDivs(slideIndex);
