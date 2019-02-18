@@ -7,14 +7,14 @@ using System.Web;
 
 namespace StarAgency2.Mapping
 {
-    public class FileMapping : ClassMap<File>
+    public class PhotoMapping : ClassMap<Photo>
     {
-        public FileMapping()
+        public PhotoMapping()
         {
             Id(x => x.Id);
             Map(x => x.Path);
             References(x => x.ActorId).Column("ActorId").Cascade.All();
-            Table("File");
+            Table("Photo");
         }
     }
 }

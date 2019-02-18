@@ -11,7 +11,7 @@ namespace StarAgency2.Models
         public virtual string Name { get; set; }
         public virtual string Biography { get; set; }
         public virtual string Gender { get; set; }
-        public virtual IList<File> Files { get; set; }
+        public virtual IList<Photo> Files { get; set; }
         public virtual IList<Movie> Movies { get; set; }
 
    

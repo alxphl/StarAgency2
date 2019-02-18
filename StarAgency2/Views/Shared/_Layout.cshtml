@@ -4,59 +4,49 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css/business.css")
+    @Styles.Render("~/Content/css/freelancer.css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/jquery-3.3.1.js")
     <style type="text/css">
-        .bgimg {
-            background-image: url('../Home/bg2.jpg');
-            margin-left: 200px;
-            margin-right: 200px;
-            padding: 40px;
-        }
-        .toleftt {
-            margin-left: 400px;
-                    
-        }
-        .textbox {
-            margin-left:200px
-        }
+      
+
     </style>
 </head>
 <body background="bg.jpg">
-<div class="bgimg">
- 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
+        <div class="bgimg">
 
-            </div>
-            <div class="navbar-collapse collapse">
-            
-                <div class="toleftt">
-                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)
-                    @Html.ActionLink("Actor", "Actors", "Home", new { area = "" }, null)
-                    @Html.ActionLink("Actress", "Actress", "Home", new { area = "" }, null)
-                    @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
 
+                    </div>
+                    <div class="navbar-collapse collapse">
+
+                        <div class="nav navbar-nav">
+                            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)
+                            @Html.ActionLink("Actor", "Actors", "Home", new { area = "" }, null)
+                            @Html.ActionLink("Actress", "Actress", "Home", new { area = "" }, null)
+                            @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)
+
+                        </div>
+
+                        @using (Html.BeginForm("Search", "Actor", FormMethod.Get))
+                        {
+                            @Html.TextBox("name")<input type="submit" value="Search" />
+                        }
+                    </div>
                 </div>
-                @using (Html.BeginForm("Search", "Actor", FormMethod.Get))
-                {
-                    @Html.TextBox("name")<input type="submit" value="Search"/>
-                }
+            </div>
+
+
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Star Agency</p>
+                </footer>
             </div>
         </div>
-    </div>
-
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr/>
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Star Agency</p>
-        </footer>
-    </div>
-</div>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/Content/vendor/bootstrap/js/bootstrap.js")
 @RenderSection("scripts", required: false)

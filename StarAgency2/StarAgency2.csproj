@@ -184,11 +184,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\ActorMapping.cs" />
-    <Compile Include="Mapping\FileMapping.cs" />
+    <Compile Include="Mapping\PhotoMapping.cs" />
     <Compile Include="Mapping\MovieMapping.cs" />
     <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\ActorViewModel.cs" />
     <Compile Include="Models\CustomHtmlHelpers.cs" />
-    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +201,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\business-casual.css" />
+    <Content Include="Content\css\freelancer.css" />
     <Content Include="Content\Images\Angelina1.jpg" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\Emma1.jpg" />

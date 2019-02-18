@@ -1,34 +1,8 @@
-﻿@using StarAgency2.Models
+﻿@using NHibernate.Linq
+@using StarAgency2.Models
+@model StarAgency2.Models.ActorViewModel
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<head>
-    <style>
-        div.gallery {
-            margin: 5px;
-            border: 1px solid #ccc;
-            float: left;
-            width: 180px;
-        }
-
-            div.gallery:hover {
-                border: 1px solid #777;
-            }
-
-            div.gallery img {
-                width: 100%;
-                height: auto;
-            }
-
-        div.desc {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .mySlides {
-            display: none;
-        }
-    </style>
-</head>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 
 
@@ -39,11 +13,46 @@
 
 
 
-
-
     <table>
-        @foreach (var item in Model)
-        {
+
+
+
+        <h2 class="w3-center"></h2>
+        <div class="w3-content w3-display-container">
+            @foreach (var item in Model.Files)
+            {
+                <img class="mySlides" src="@Html.Encode(item.Path)" style="width:100%">
+
+            }
+            <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+
+
+            
+
+
+            <br />
+            <br />
+            <br />
+            Name:
+            <br />
+            @Model.Name
+            <br />
+            <br />
+            Biography:
+            <br />
+            @Model.Biography
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <h7>        Filmography </h7>
+            <br />
+            <br />
+
+
 
 
 
@@ -51,107 +60,66 @@
 
 
 
-                <td>
-                    <h2 class="w3-center">@Html.Encode(item.Name)</h2>
 
-                    <div class="w3-content w3-display-container">
-                        <img class="mySlides" src="@Html.Encode(item.Name)1.jpg" style="width:100%">
-                        <img class="mySlides" src="@Html.Encode(item.Name)2.jpg" style="width:100%">
-                        <img class="mySlides" src="@Html.Encode(item.Name)3.jpg" style="width:100%">
-                        <img class="mySlides" src="@Html.Encode(item.Name)4.jpg" style="width:100%">
-
-                        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-                    </div>
-            </tr>
-
-            <tr>
                 <th>
 
-                    Biography
-                    @Html.Encode(item.Biography)
+                    Title
+
+                </th>
+                <th></th>
+                <th>
+
+                    Year
+
+                </th>
+                <th></th>
+                <th>
+
+                    Link
 
                 </th>
 
 
-            </tr>
-
-
-
-
-
-
-        }
-
-    </table>
-    <table>
-
-        <tr>
-
-
-
-            <th>
-
-                Title
-
-            </th>
-            <th></th>
-            <th>
-
-                Year
-
-            </th>
-            <th></th>
-            <th>
-
-                Link
-
-            </th>
-
-
-
-        </tr>
-
-
-
-        <h7>Filmography  </h7>
-
-        @foreach (var item1 in ViewBag.Movies)
-        {
-
-
-            <tr>
-
-
-
-                <td>
-
-                    @Html.Encode(item1.Name)
-
-                </td>
-                <th></th>
-
-                <td>
-
-                    @Html.Encode(item1.Year)
-
-
-                </td>
-                <th></th>
-                <td>
-                    <a href="@Html.Encode(item1.Link)">Link to Movie</a>
-
-
-
-                </td>
-
-
 
             </tr>
 
 
+            @foreach (var item in Model.Movies)
+            {
 
-        }
+
+                <tr>
+
+
+
+                    <td>
+
+                        @Html.Encode(item.Name)
+
+                    </td>
+                    <th></th>
+
+                    <td>
+
+                        @Html.Encode(item.Year)
+
+
+                    </td>
+                    <th></th>
+                    <td>
+                        <a href="@Html.Encode(item.Link)">Link to Movie</a>
+
+
+
+                    </td>
+
+
+
+                </tr>
+
+
+
+            }
 
     </table>
     <script>

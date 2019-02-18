@@ -20,39 +20,35 @@ namespace StarAgency2.Controllers
         { 
             using (var session = NHibernateHelper.OpenSession())
             using (session.BeginTransaction())
-            { 
-        
+            {
                 var actor = session.Query<Actor>().Where(x=>x.Id==id).ToList();
                 var movies = session.Query<Movie>().Where(x => x.ActorId.Id == id).OrderByDescending(x=>x.Year).ToList();
-               var files = session.Query<File>().Where(x => x.ActorId.Id == id);
-                ViewBag.Movies = movies.ToList();
-               ViewBag.Files = files;
-          
-                return View(actor);
-
-            }
-    
+                var files = session.Query<Photo>().Where(x => x.ActorId.Id == id).ToList();
+                ActorViewModel avm = new ActorViewModel();
+                avm.Name = actor[0].Name;
+                avm.Biography = actor[0].Biography;
+                avm.Movies = session.Query<Movie>().Where(x => x.ActorId.Id == id).OrderByDescending(x => x.Year).ToList();
+                avm.Files = files;
+                return View(avm);
+            };
         }
+    
+     
 
         public ActionResult Search(string name)
         {
-
                 using (var session = NHibernateHelper.OpenSession())
                 using (session.BeginTransaction())
                 {
-
-                       var actor = session.Query<Actor>().Where(x => x.Name == name).ToList();
-                       var movies = session.Query<Movie>().Where(x => x.ActorId == actor[0]).OrderByDescending(x => x.Year)  .ToList();
-                       ViewBag.Movies = movies.ToList();
-                       var files = session.Query<File>().Where(x => x.ActorId.Id == actor[0].Id);
-                       ViewBag.Files = files;
-                       return View(actor);
-
+                    var actor = session.Query<Actor>().Where(x => x.Name == name).ToList();
+                    var movies = session.Query<Movie>().Where(x => x.ActorId == actor[0]).OrderByDescending(x => x.Year).ToList();
+                    ActorViewModel avm = new ActorViewModel();
+                    avm.Name = actor[0].Name;
+                    avm.Biography = actor[0].Biography;
+                    avm.Movies = movies;
+                    avm.Files = session.Query<Photo>().Where(x => x.ActorId.Id == actor[0].Id).ToList();
+                    return View(avm);
                 }
-            
-
-
-
         }
     }
 }
